@@ -20,4 +20,29 @@ public class ProductRepository {
     public List<Product> getAllProducts() {
         return products;
     }
+
+    public Product getProductById(String id) {
+        return products.stream()
+                .filter(p -> String.valueOf(p.getId()).equals(id))
+                .findFirst()
+                .orElse(null);
+    }
+
+    public Product save(Product product) {
+        products.add(product);
+        return product;
+    }
+
+    public Product updateProduct(String id, Product updatedProduct) {
+        Product existing = getProductById(id);
+        if (existing != null) {
+            existing.setName(updatedProduct.getName());
+            existing.setPrice(updatedProduct.getPrice());
+            return existing;
+        }
+        return null;
+    }
+
+    public void deleteById(String id) {
+        products.removeIf(p -> String.valueOf(p.getId()).equals(id));    }
 }

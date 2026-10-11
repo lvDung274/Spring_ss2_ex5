@@ -17,4 +17,18 @@ private  final ProductRepository productRepository;
     public List<Product> getAllProducts() {
         return productRepository.getAllProducts();
     }
+    public Product getProductById(String id) {
+        return productRepository.getProductById(id);
+    }
+    public Product save(Product product) {
+        return productRepository.save(product);
+    }
+
+    public Product update(String id, Product product) {
+        return productRepository.updateProduct(id, product);
+    }
+
+    public void deleteById(String id) {
+        productRepository.deleteById(id);
+    }
 }
